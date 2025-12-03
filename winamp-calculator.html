@@ -216,8 +216,8 @@ button.danger:active {
         <div class="metronome-controls">
           <button id="metro-toggle">Старт</button>
           <div class="tempo">
-            <label for="tempo">Темп: <span id="tempo-value">369</span> BPM</label>
-            <input type="range" id="tempo" min="20" max="369" value="120" />
+            <label for="tempo">Темп: <span id="tempo-value">555</span> BPM</label>
+            <input type="range" id="tempo" min="20" max="555" value="120" />
           </div>
         </div>
       </section>
@@ -375,7 +375,7 @@ button.danger:active {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = "square";
-        osc.frequency.value = 639;
+        osc.frequency.value = 555;
         gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(
           0.001,

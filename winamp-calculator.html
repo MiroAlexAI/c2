@@ -138,6 +138,13 @@ button.danger:active {
         gap: 12px;
       }
 
+      .metronome-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 10px;
+      }
+
       .metronome button {
         font-size: 0.95rem;
         padding: 8px 16px;
@@ -173,6 +180,60 @@ button.danger:active {
         background: var(--accent);
         border: 1px solid #000;
         box-shadow: 0 0 5px var(--accent);
+      }
+
+      .freq-label {
+        font-size: 0.8rem;
+        color: var(--text-dim);
+      }
+
+      .rhythm-buttons {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .rhythm-buttons button {
+        font-size: 0.75rem;
+        padding: 6px 8px;
+        background: linear-gradient(180deg, #4f8cff 0%, #1651c2 100%);
+        box-shadow: 0 3px #0f2f5f;
+        color: #f5f5f5;
+      }
+
+      .rhythm-buttons button.active {
+        background: linear-gradient(180deg, #ffe83a 0%, #fd9c00 100%);
+        box-shadow: 0 3px #b26500;
+        color: #111;
+      }
+
+      .beat-indicators {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+        justify-content: center;
+      }
+
+      .beat-led {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #222;
+        border: 1px solid #000;
+        box-shadow: 0 0 4px #000;
+        transition: background 0.1s ease, box-shadow 0.1s ease, transform 0.1s ease;
+      }
+
+      .beat-led.active {
+        background: #3aff5c;
+        box-shadow: 0 0 6px #3aff5c;
+        transform: scale(1.1);
+      }
+
+      .beat-led.accent {
+        background: #ff5a5a;
+        box-shadow: 0 0 8px #ff5a5a;
+        transform: scale(1.2);
       }
 
       small {
@@ -213,11 +274,118 @@ button.danger:active {
 
       <section class="metronome">
         <h2>metronome</h2>
-        <div class="metronome-controls">
-          <button id="metro-toggle">Старт</button>
-          <div class="tempo">
-            <label for="tempo">Темп: <span id="tempo-value">555</span> BPM</label>
-            <input type="range" id="tempo" min="20" max="555" value="120" />
+
+        <div class="metronome-instance">
+          <div class="metronome-controls">
+            <button class="metro-toggle">Старт</button>
+            <div class="tempo">
+              <label>Темп: <span class="tempo-value">120</span> BPM</label>
+              <input
+                type="range"
+                class="tempo-slider"
+                min="20"
+                max="555"
+                value="120"
+              />
+            </div>
+          </div>
+          <div class="metronome-row">
+            <div class="tempo">
+              <label class="freq-label"
+                >Частота: <span class="freq-value">555</span> Гц</label
+              >
+              <input
+                type="range"
+                class="freq-slider"
+                min="5"
+                max="8000"
+                value="555"
+              />
+            </div>
+            <div class="rhythm-buttons">
+              <button type="button" data-rhythm="0" class="active">4/4</button>
+              <button type="button" data-rhythm="1">3/4</button>
+              <button type="button" data-rhythm="2">Синкопа</button>
+            </div>
+          </div>
+          <div class="beat-indicators">
+            <!-- индикаторы создаются скриптом -->
+          </div>
+        </div>
+
+        <div class="metronome-instance">
+          <div class="metronome-controls">
+            <button class="metro-toggle">Старт</button>
+            <div class="tempo">
+              <label>Темп: <span class="tempo-value">120</span> BPM</label>
+              <input
+                type="range"
+                class="tempo-slider"
+                min="20"
+                max="555"
+                value="120"
+              />
+            </div>
+          </div>
+          <div class="metronome-row">
+            <div class="tempo">
+              <label class="freq-label"
+                >Частота: <span class="freq-value">555</span> Гц</label
+              >
+              <input
+                type="range"
+                class="freq-slider"
+                min="5"
+                max="8000"
+                value="555"
+              />
+            </div>
+            <div class="rhythm-buttons">
+              <button type="button" data-rhythm="0" class="active">4/4</button>
+              <button type="button" data-rhythm="1">3/4</button>
+              <button type="button" data-rhythm="2">Синкопа</button>
+            </div>
+          </div>
+          <div class="beat-indicators">
+            <!-- индикаторы создаются скриптом -->
+          </div>
+        </div>
+
+        <div class="metronome-instance">
+          <div class="metronome-controls">
+            <button class="metro-toggle">Старт</button>
+            <div class="tempo">
+              <label>Темп: <span class="tempo-value">120</span> BPM</label>
+              <input
+                type="range"
+                class="tempo-slider"
+                min="20"
+                max="555"
+                value="120"
+              />
+            </div>
+          </div>
+          <div class="metronome-row">
+            <div class="tempo">
+              <label class="freq-label"
+                >Частота: <span class="freq-value">555</span> Гц</label
+              >
+              <input
+                type="range"
+                class="freq-slider"
+                min="5"
+                max="8000"
+                value="555"
+              />
+            </div>
+            <div class="rhythm-buttons">
+              <button type="button" data-rhythm="0" class="active">4/4</button>
+              <button type="button" data-rhythm="1">3/4</button>
+              <button type="button" data-rhythm="2">Синкопа</button>
+            </div>
+          </div>
+          <div class="beat-indicators">
+            <!-- индикаторы создаются скриптом -->
           </div>
         </div>
       </section>
@@ -228,9 +396,6 @@ button.danger:active {
     <script>
       const display = document.getElementById("display");
       const keys = document.getElementById("keys");
-      const metroToggle = document.getElementById("metro-toggle");
-      const tempoSlider = document.getElementById("tempo");
-      const tempoValue = document.getElementById("tempo-value");
 
       const state = {
         displayValue: "0",
@@ -366,58 +531,140 @@ button.danger:active {
 
       // ----- Метроном -----
       let audioCtx = null;
-      let metronomeInterval = null;
 
-      function playTick() {
-        if (!audioCtx) {
-          return;
-        }
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = "square";
-        osc.frequency.value = 555;
-        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(
-          0.001,
-          audioCtx.currentTime + 0.1
+      const patterns = [
+        { name: "4/4", beats: 4, accents: [0] },
+        { name: "3/4", beats: 3, accents: [0] },
+        { name: "Синкопа", beats: 4, accents: [0, 2] },
+      ];
+
+      function initMetronome(root) {
+        const metroToggle = root.querySelector(".metro-toggle");
+        const tempoSlider = root.querySelector(".tempo-slider");
+        const tempoValue = root.querySelector(".tempo-value");
+        const freqSlider = root.querySelector(".freq-slider");
+        const freqValue = root.querySelector(".freq-value");
+        const beatIndicatorsContainer =
+          root.querySelector(".beat-indicators");
+        const rhythmButtons = root.querySelectorAll(
+          ".rhythm-buttons button"
         );
-        osc.connect(gain).connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.1);
-      }
 
-      function toggleMetronome() {
-        if (!audioCtx) {
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let metronomeInterval = null;
+        let baseFrequency = parseInt(freqSlider.value, 10);
+        let currentPatternIndex = 0;
+        let currentBeat = 0;
+        let beatLeds = [];
+
+        function createBeatIndicators() {
+          beatIndicatorsContainer.innerHTML = "";
+          beatLeds = [];
+          const pattern = patterns[currentPatternIndex];
+          for (let i = 0; i < pattern.beats; i++) {
+            const led = document.createElement("div");
+            led.className = "beat-led";
+            beatIndicatorsContainer.appendChild(led);
+            beatLeds.push(led);
+          }
         }
 
-        if (metronomeInterval) {
-          clearInterval(metronomeInterval);
-          metronomeInterval = null;
-          metroToggle.textContent = "Старт";
-          metroToggle.classList.remove("operator");
-          return;
+        function updateBeatIndicators(accent) {
+          beatLeds.forEach((led, index) => {
+            led.classList.remove("active", "accent");
+            if (index === currentBeat) {
+              led.classList.add(accent ? "accent" : "active");
+            }
+          });
         }
 
-        const tempoMs = (60 / parseInt(tempoSlider.value, 10)) * 1000;
-        playTick();
-        metronomeInterval = setInterval(playTick, tempoMs);
-        metroToggle.textContent = "Стоп";
-        metroToggle.classList.add("operator");
-      }
+        function playTick(accent) {
+          if (!audioCtx) {
+            return;
+          }
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "square";
+          const freq = accent ? baseFrequency * 1.2 : baseFrequency;
+          osc.frequency.value = freq;
+          const startGain = accent ? 0.3 : 0.2;
+          gain.gain.setValueAtTime(startGain, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audioCtx.currentTime + 0.1
+          );
+          osc.connect(gain).connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.1);
+        }
 
-      metroToggle.addEventListener("click", () => {
-        toggleMetronome();
-      });
+        function tick() {
+          const pattern = patterns[currentPatternIndex];
+          const accent = pattern.accents.includes(currentBeat);
+          playTick(accent);
+          updateBeatIndicators(accent);
+          currentBeat = (currentBeat + 1) % pattern.beats;
+        }
 
-      tempoSlider.addEventListener("input", () => {
-        tempoValue.textContent = tempoSlider.value;
-        if (metronomeInterval) {
-          clearInterval(metronomeInterval);
+        function toggleMetronome() {
+          if (!audioCtx) {
+            audioCtx =
+              new (window.AudioContext || window.webkitAudioContext)();
+          }
+
+          if (metronomeInterval) {
+            clearInterval(metronomeInterval);
+            metronomeInterval = null;
+            metroToggle.textContent = "Старт";
+            metroToggle.classList.remove("operator");
+            return;
+          }
+
           const tempoMs = (60 / parseInt(tempoSlider.value, 10)) * 1000;
-          metronomeInterval = setInterval(playTick, tempoMs);
+          currentBeat = 0;
+          tick();
+          metronomeInterval = setInterval(tick, tempoMs);
+          metroToggle.textContent = "Стоп";
+          metroToggle.classList.add("operator");
         }
-      });
+
+        metroToggle.addEventListener("click", () => {
+          toggleMetronome();
+        });
+
+        tempoSlider.addEventListener("input", () => {
+          tempoValue.textContent = tempoSlider.value;
+          if (metronomeInterval) {
+            clearInterval(metronomeInterval);
+            const tempoMs =
+              (60 / parseInt(tempoSlider.value, 10)) * 1000;
+            metronomeInterval = setInterval(tick, tempoMs);
+          }
+        });
+
+        freqSlider.addEventListener("input", () => {
+          baseFrequency = parseInt(freqSlider.value, 10);
+          freqValue.textContent = baseFrequency;
+        });
+
+        rhythmButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const index = parseInt(btn.dataset.rhythm, 10);
+            currentPatternIndex = index;
+            currentBeat = 0;
+            rhythmButtons.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            createBeatIndicators();
+          });
+        });
+
+        createBeatIndicators();
+        tempoValue.textContent = tempoSlider.value;
+        freqValue.textContent = baseFrequency;
+      }
+
+      document
+        .querySelectorAll(".metronome-instance")
+        .forEach((instance) => initMetronome(instance));
 
       updateDisplay();
     </script>
